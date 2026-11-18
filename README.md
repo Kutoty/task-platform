@@ -1,17 +1,13 @@
 # Task platform
 
-A small task board with signed login tokens and a role check. Data stays in memory, so it resets when the process stops.
+Nest.js API with PostgreSQL. Login returns a JWT. Admins see every task. Members see only their own. Docker Compose starts the database and the API.
 
 ## Run
 
 ```bash
-npm test
-npm start
+docker compose up --build
 ```
 
-Open http://localhost:3000
+Demo logins: `admin` / `admin`, `member` / `member`.
 
-| User | Password | Sees |
-| --- | --- | --- |
-| admin | admin | Every task |
-| member | member | Only tasks they added |
+`npm test` checks the role rule without a database.

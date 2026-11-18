@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: task
+      POSTGRES_PASSWORD: task
+      POSTGRES_DB: tasks
+    ports:
+      - "5432:5432"
+  api:
+    build: .
+    environment:
+      DATABASE_URL: postgres://task:task@db:5432/tasks
+      JWT_SECRET: demo-secret
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
